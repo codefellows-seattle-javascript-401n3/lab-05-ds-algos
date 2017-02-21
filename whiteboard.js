@@ -1,26 +1,28 @@
 'use strict';
 
-var arr = [1, 0, 3, 5, 3, 4, 5, 6, 2, 9];
-
-function hasIncrementingSequence(arr) {
-    var count = 0;
-    var isIncrementing = false;
-
-    for(var i = 1; i < arr.length; i++) {
-      if(arr[i] < arr[i-1]) {
-        if(isIncrementing) {
-          count += 1;
-          isIncrementing = false;
-        }
+function insert(node, target) {
+  if(!node) return
+  if(node.val < target.val) {
+    if(target.left) {
+      insert(node.left, target) {
+      } else {
+        target.left = node;
       }
-      else {
-        isIncrementing = true;
-       }
-     }
-     if(isIncrementing) {
-      count += 1;
-      console.log(count);
-      return count;
-    }
+    } else {
+      if(target.right) {
+        insert(node.right, target)
+      } else {
+        target.right = node;
+      };
+    };
+  };
 };
-hasIncrementingSequence(arr);
+
+function delete(node, current) {
+  if (!node) return
+  if (current.val < node.val) {
+    delete (node.left, current)
+  } else if (current.val > node.val) {
+    delete (node.right, current)
+  }
+}
